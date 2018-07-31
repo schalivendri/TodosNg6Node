@@ -4,6 +4,10 @@ Todos Application built with Angular 6, Node, Express, Mongoose and MLab for Mon
 
 ## Build
 
-Run `ng build` from public to build the client project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+npm install
+cd public
+git submodule init
+git submodule update
 
+## Run
 Run `node server.js` and launch `http://localhost:3000/`
