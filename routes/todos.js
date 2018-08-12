@@ -3,6 +3,7 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 const Todo = require('../models/todo')
 const SECRET_KEY = process.env.MY_SECRET
+let userId = ''
 
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {
@@ -17,11 +18,13 @@ function verifyToken(req, res, next) {
         return res.status(401).send('Unauthorized request!')
     }
     req.userId = payload.subject 
+    userId = payload.subject
     next()
 }
 
 router.post('/todo', (req, res) => {
     const todoData = req.body
+    todoData.userId = userId
     const todo = new Todo(todoData)
     todo.save((err, savedTodo) => {
         if(err) {
@@ -34,7 +37,7 @@ router.post('/todo', (req, res) => {
 })
 
 router.get('/todo', verifyToken, (req, res) => {
-    Todo.find({}, (err, result) => {
+    Todo.find({userId: req.userId}, (err, result) => {
         if(err) {
             console.log('Error retrieving todos')
         } else {
@@ -57,6 +60,7 @@ router.delete('/todo/:id', (req, res) => {
 
 router.put('/todo', (req, res) => {
     const todoData = req.body
+    todoData.userId = req.userId
     const todo = new Todo({
         _id: todoData._id,
         label: todoData.label,
