@@ -1,6 +1,7 @@
 # Ng6Todos
 
 Todos Application built with Angular 6, Node, Express, Mongoose and MLab for MongoDB Collections
+http://ec2-18-222-192-193.us-east-2.compute.amazonaws.com
 
 ## Build
 
