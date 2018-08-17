@@ -12,3 +12,6 @@ git submodule update
 
 ## Run
 Run `node server.js` and launch `http://localhost:3000/`
+
+
+![Alt Text](https://thumbs.gfycat.com/HandmadeFriendlyGalapagosalbatross-size_restricted.gif)
